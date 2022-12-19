@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.schema.TestEvent1;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +16,14 @@ public class KafkaConsumerAvro {
 
     private CountDownLatch latch = new CountDownLatch(1);
     private String payload;
-    private Greeting data;
+    private TestEvent1 data;
 
 
     @KafkaListener(topics = "${test.topicavro}")
     public void receive(ConsumerRecord<?, ?> consumerRecord) {
         LOGGER.info("received payload='{}'", consumerRecord.toString());
         payload = consumerRecord.toString();
-        data = (Greeting) consumerRecord.value();
+        data = (TestEvent1) consumerRecord.value();
         latch.countDown();
     }
 
@@ -38,7 +39,7 @@ public class KafkaConsumerAvro {
         return payload;
     }
 
-    public Greeting getData() {
+    public TestEvent1 getData() {
         return data;
     }
 }

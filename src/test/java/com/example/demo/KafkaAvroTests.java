@@ -2,12 +2,15 @@ package com.example.demo;
 
 import com.example.demo.schema.TestEvent1;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
+import org.testcontainers.containers.KafkaContainer;
+import org.testcontainers.containers.Network;
 
 import java.util.Properties;
 import java.util.Random;
@@ -42,5 +45,6 @@ public class KafkaAvroTests {
         assertTrue(messageConsumed);
         assertEquals(consumer.getData(), data);
     }
+
 
 }
