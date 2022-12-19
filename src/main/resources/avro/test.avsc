@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "TestEvent1",
+  "namespace": "com.example.demo.schema",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "random",
+      "type": "int"
+    }
+  ]
+}
